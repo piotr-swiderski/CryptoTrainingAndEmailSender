@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Matrix Guide</title>
+</head>
+<body>
+<h2>Matrix Cipher</h2>
+<p><strong>Opis metody:</strong></p>
+<p>Jest to prosty szyfr przestawieniowy oparty na figurze geometrycznej.
+    W tym przypadku jest to kwadrat. Szyfrowanie polega na wprowadzeniu
+    tekstu do macierzy po kolei wierszami a następnie odczytanie tekstu
+    z macierzy kolumnami.</p>
+<p><strong>Przykład:</strong></p>
+<p>Tekst jawny: AlgorytmyiStrukturyDanych<br>
+    Tekst zapisujemy w kwadrat 5x5<br><br>
+    Algor<br><br>ytmyi<br><br>Struk<br><br>turyD<br><br>
+    anych<br><br>Następnie odczytujemy kolumnami: AyStalttungmrryoyuycrikDh<br><br>
+    Aby odszyfrować dany tekst należy operację powtórzyć drugi raz. Otrzymany tekst będzie tekstem jawnym.</p>
+<p><strong>Opis proceduty:</strong></p>
+<p>Wszystkie znaki z pliku wejściowego przenoszone są do tablicy pomocniczej. Dodatkowo obliczana jest
+    liczba tych znaków (i). Na podstawie tej liczby obliczana jest wielkość potrzebnej macierzy kwadratowej.
+    Następnie macierz tą wypełniamy jakimiś symbolami. W moim przypadku macierz wypełniana jest spacjami.
+    Następnie przepisujemy znaki z tablicy pomocniczej do macierzy a następnie odczytujemy z macierzy kolumnami
+    zapisując do pliku wynikowego.</p>
+</body>
+</html>

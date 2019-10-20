@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<SplitPane xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.szestkam.application.controller.EmailSendController">
+   <items>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <SplitPane dividerPositions="0.31909547738693467" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                     <children>
+                        <Label layoutX="45.0" layoutY="14.0" text="Email Send">
+                           <font>
+                              <Font name="Arial" size="24.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="emailAddressToSend" layoutX="68.0" layoutY="55.0" prefHeight="25.0" prefWidth="205.0" />
+                        <TextField fx:id="subjectText" layoutX="68.0" layoutY="90.0" prefHeight="25.0" prefWidth="205.0" />
+                        <Label layoutX="28.0" layoutY="59.0" text="Adres:" />
+                        <Label layoutX="28.0" layoutY="94.0" text="Temat:" />
+                        <Button layoutX="361.0" layoutY="90.0" mnemonicParsing="false" onAction="#sendEmail" text="Send Email" />
+                        <Button layoutX="451.0" layoutY="90.0" mnemonicParsing="false" onAction="#saveEmail" text="Save Email To PDF" />
+                        <Button layoutX="513.0" layoutY="15.0" mnemonicParsing="false" onAction="#logOff" text="log off" />
+                        <Label layoutX="299.0" layoutY="19.0" text="log on:" />
+                        <Label fx:id="logonAddress" layoutX="343.0" layoutY="19.0" prefHeight="17.0" prefWidth="167.0" />
+                     </children>
+                  </AnchorPane>
+                <AnchorPane fx:id="messagePane" minHeight="0.0" minWidth="0.0" prefHeight="227.0" prefWidth="598.0">
+                     <children>
+                        <TextArea fx:id="emailText" layoutX="20.0" layoutY="13.0" prefHeight="221.0" prefWidth="563.0" />
+                        <Label fx:id="emailStatus" layoutX="333.0" layoutY="237.0" prefHeight="17.0" prefWidth="259.0" text="status" />
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+         </children>
+      </Pane>
+   </items>
+</SplitPane>
