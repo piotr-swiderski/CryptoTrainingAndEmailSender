@@ -36,7 +36,7 @@
                 <AnchorPane fx:id="messagePane" minHeight="0.0" minWidth="0.0" prefHeight="227.0" prefWidth="598.0">
                      <children>
                         <Label fx:id="emailStatus" layoutX="333.0" layoutY="237.0" prefHeight="17.0" prefWidth="259.0" text="status" />
-                        <HTMLEditor fx:id="emailText" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" layoutX="7.0" layoutY="6.0" prefHeight="225.0" prefWidth="587.0" />
+                        <HTMLEditor fx:id="emailText" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" layoutX="7.0" layoutY="6.0" prefHeight="212.0" prefWidth="587.0" />
                      </children>
                   </AnchorPane>
               </items>

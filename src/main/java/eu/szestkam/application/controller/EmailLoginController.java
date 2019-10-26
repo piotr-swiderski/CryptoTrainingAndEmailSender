@@ -34,13 +34,13 @@ public class EmailLoginController {
     ComboBox<String> comboBoxEmail;
 
 
-    public void initialize(){
+    public void initialize() {
         comboBoxEmail.setEditable(true);
         comboBoxEmail.getItems().addAll(emailAddressList);
         session = null;
     }
 
-    public void closeEmail(){
+    public void closeEmail() {
         Platform.exit();
     }
 
@@ -49,12 +49,12 @@ public class EmailLoginController {
         final String password = passwordField.getText();
 
 
-        if(!username.matches("[\\w._]*"+"@gmail.com")){
+        if (!username.matches("[\\w._]*" + "@gmail.com")) {
             loginStatus.setText("Email adress is wrong");
             throw new IllegalArgumentException("Wrong emial adress");
         }
         addAddressToList(comboBoxEmail.getValue());
-        if(password.isEmpty()){
+        if (password.isEmpty()) {
             loginStatus.setText("Password is wrong");
             throw new IllegalArgumentException("Password can't by empty");
         }
@@ -76,7 +76,7 @@ public class EmailLoginController {
                     });
 
             Transport transport = session.getTransport("smtp");
-            transport.connect(host,port,username,password);
+            transport.connect(host, port, username, password);
             System.out.println("Connect");
             changeWindowToSend();
         } catch (NoSuchProviderException e) {
@@ -101,7 +101,7 @@ public class EmailLoginController {
     public void changeWindowToSend() throws MalformedURLException {
         FXMLLoader loader = new FXMLLoader(new File("D:\\SDA_Academy\\CryptoTrainnig\\CryptoTraining-master\\src\\" +
                 "main\\java\\eu\\szestkam\\application\\resources\\" +
-                "fxml\\EmailWindow.fxml").toURI().toURL());
+                "fxml\\EmailWindow2.fxml").toURI().toURL());
         SplitPane pane = null;
         try {
             pane = loader.load();
@@ -117,8 +117,10 @@ public class EmailLoginController {
     }
 
 
-    private void addAddressToList(String address){
-        emailAddressList.add(address);
+    private void addAddressToList(String address) {
+        if (!emailAddressList.contains(address)) {
+            emailAddressList.add(address);
+        }
         comboBoxEmail.getItems().addAll(emailAddressList);
     }
 

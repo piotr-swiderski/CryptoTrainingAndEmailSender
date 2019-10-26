@@ -3,6 +3,7 @@ package eu.szestkam.application.controller;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.html.simpleparser.HTMLWorker;
 import com.itextpdf.text.pdf.PdfWriter;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,14 +11,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.web.HTMLEditor;
 
+import javax.activation.DataHandler;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.net.MalformedURLException;
 
 public class EmailSendController {
@@ -31,7 +31,7 @@ public class EmailSendController {
     private EmailMainController emailMainController;
 
     @FXML
-    TextArea emailText;
+    HTMLEditor emailText;
     @FXML
     TextField emailAddressToSend;
     @FXML
@@ -65,12 +65,13 @@ public class EmailSendController {
         try {
             if (!subjectText.getText().equals("")) {
                 PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(subjectText.getText() + ".pdf"));
-                if (!emailText.getText().equals("")) {
+                if (!emailText.getHtmlText().equals("")) {
                     document.open();
                     document.add(new Paragraph("Send to: " + emailAddressToSend.getText()));
                     document.add(new Paragraph("Subject: " + subjectText.getText() + "\n\n"));
                     document.add(new Paragraph(""));
-                    document.add(new Paragraph(emailText.getText()));
+                    HTMLWorker hw = new HTMLWorker(document);
+                    hw.parse(new StringReader(emailText.getHtmlText()));
                     document.close();
                 } else {
                     //message error
@@ -96,7 +97,7 @@ public class EmailSendController {
                     InternetAddress.parse(emailAddressToSend.getText())
             );
             message.setSubject(subjectText.getText());
-            message.setText(emailText.getText());
+            message.setContent(emailText.getHtmlText(), "text/html; charset=utf-8");
 
             Transport.send(message);
 
