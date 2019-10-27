@@ -93,7 +93,6 @@ public class EmailLoginController {
 
     }
 
-
     public void setEmailLoginController(EmailMainController emailMainController) {
         this.emailMainController = emailMainController;
     }
